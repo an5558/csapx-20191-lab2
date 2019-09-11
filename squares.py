@@ -1,5 +1,6 @@
 import turtle as tt
 import snippet
+import math
 """
 CSAPX Lab 2: Recursion Squares
 
@@ -16,6 +17,47 @@ def draw_square(length):
     tt.left(90)
     tt.forward(length)
     tt.left(90)
+
+def draw_rec(length, depth):
+    if depth % 2 == 0:
+        tt.color('orange')
+    else:
+        tt.color('blue')
+    if depth == 0:
+        pass
+    else:
+        tt.forward(length)
+        tt.left(90)
+        tt.forward(length/2)
+        tt.left(45)
+        if depth % 2 == 0:
+            tt.color('blue')
+        else:
+            tt.color('orange')
+        draw_rec(((length/2)/math.sqrt(2)), depth-1)
+        if depth % 2 == 0:
+            tt.color('orange')
+        else:
+            tt.color('blue')
+        tt.right(45)
+        tt.forward(length/2)
+        tt.left(90)
+        tt.forward(length)
+        tt.left(90)
+        tt.forward(length / 2)
+        tt.left(45)
+        if depth % 2 == 0:
+            tt.color('orange')
+        else:
+            tt.color('blue')
+        draw_rec(((length/2)/math.sqrt(2)), depth - 1)
+        if depth % 2 == 0:
+            tt.color('orange')
+        else:
+            tt.color('blue')
+        tt.right(45)
+        tt.forward(length / 2)
+        tt.left(90)
 
 def draw_squares(length, depth):
     if depth == 0:
@@ -63,7 +105,7 @@ def draw_squares(length, depth):
 def main():
     snippet.init(500, 4)
     tt.down()
-    draw_squares(700, 3)
+    draw_rec(450, 4)
     tt.done()
 
 if __name__ == '__main__':
