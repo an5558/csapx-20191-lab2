@@ -8,16 +8,15 @@ A program that recursively draws a square design given a depth and a side length
 
 author: Ayane Naito
 """
-def draw_square(length):
-    tt.forward(length)
-    tt.left(90)
-    tt.forward(length)
-    tt.left(90)
-    tt.forward(length)
-    tt.left(90)
-    tt.forward(length)
-    tt.left(90)
 
+"""
+Draws a series of insccribed squares recursively given a side length and depth. Changes colors of the lines between
+orange and blue, where the square of the highest level depth is drawn in blue. Colors alternate from that starting point.
+    :param length: side length of the largest square (square at depth = 1)
+    :param depth: number of levels of recursion desired
+    :pre-condition: Turtle is in bottom left corner facing east with pen down.
+    :post: Turtle is in bottom left corner facing east with pen down.
+"""
 def draw_rec(length, depth):
     if depth % 2 == 0:
         tt.color('orange')
@@ -59,53 +58,10 @@ def draw_rec(length, depth):
         tt.forward(length / 2)
         tt.left(90)
 
-def draw_squares(length, depth):
-    if depth == 0:
-        pass
-    elif depth == 1:
-        draw_square(length)
-    else:
-        #draw_square(length/2)
-        tt.forward(length/2)
-        tt.left(90)
-        tt.forward(length/4)
-        tt.left(45)
-        draw_squares(length/6, depth-1)
-        tt.right(45)
-        tt.forward(length/4)
-        tt.left(90)
-        tt.forward(length/2)
-        tt.left(90)
-        tt.forward(length/4)
-        tt.left(45)
-        draw_squares(length/6, depth-1)
-        tt.right(45)
-        tt.forward(length/4)
-        """
-        tt.forward(length/6)
-        tt.left(90)
-        tt.forward(length/3)
-        tt.right(90)
-        tt.forward(length/6)
-        tt.right(90)
-        tt.forward(length/6)
-        tt.right(90)
-        tt.forward(length/6)
-        #tt.right(90)
-        #tt.forward(length/3)
-        #draw_squares(length/6, depth-1)
-        
-        
-        draw_squares(length//depth, depth-1)
-        tt.left(135)
-        tt.forward(length//depth)
-        draw_squares(length//depth, depth-1)
-        """
-
 def main():
     snippet.init(500, 4)
     tt.down()
-    draw_rec(450, 4)
+    draw_rec(450, 0)
     tt.done()
 
 if __name__ == '__main__':
