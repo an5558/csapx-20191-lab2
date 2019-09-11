@@ -30,7 +30,6 @@ def init(size: int, speed: int):
     turtle.setup(smaller_dim, smaller_dim)
     turtle.setworldcoordinates(-MARGIN, -MARGIN, size + MARGIN, size + MARGIN)
     turtle.down()
-    turtle.hideturtle()
     turtle.speed(speed)
     turtle.pensize(PEN_WIDTH)
     turtle.penup()
